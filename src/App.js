@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from './components/Header.js';
-// import MessageList from './components/MessageList.js';
-// import Compose from './components/Compose.js';
+import { Container } from 'semantic-ui-react'
+import NavBar from './components/NavBar.js';
 
 const App = () => (
   <div>
-    <div className="ui text container">
-      <Header />
-      < />
-      < />
-    </div>
+    <Container>
+      <NavBar />
+    </Container>
   </div>
 )
 
