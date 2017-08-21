@@ -15,9 +15,9 @@ class Home extends Component {
     return (
       <div>
         <Segment>
-            <div className="quote-banner">
-              {/* <Quote /> */}
-            </div>
+          <div className="quote-banner">
+            {/* <Quote /> */}
+          </div>
         </Segment>
         {/* <Grid padded id="landing-grid">
           <Grid.Row id="intro-row">

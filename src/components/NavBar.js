@@ -9,7 +9,6 @@ class NavBar extends Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-
   render () {
     const { activeItem } = this.state
 
@@ -26,10 +25,6 @@ class NavBar extends Component {
             <Menu.Item name='register' active={activeItem === 'register'} onClick={this.handleItemClick} />
           </Menu.Menu>
         </Menu>
-
-        {/* <Segment>
-          <img src='/assets/images/wireframe/media-paragraph.png' />
-        </Segment> */}
       </div>
     );
   }
