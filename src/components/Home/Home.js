@@ -3,7 +3,7 @@ import { Segment } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import {  } from '../actions';
-// import Quote from './Quote';
+import Quote from './Quote';
 // import RecruiterModal from './recruiter-modal';
 // import Technologies from './technologies';
 // import Team from './team';
@@ -15,9 +15,7 @@ class Home extends Component {
     return (
       <div>
         <Segment>
-          <div className="quote-banner">
-            {/* <Quote /> */}
-          </div>
+          <Quote />
         </Segment>
         {/* <Grid padded id="landing-grid">
           <Grid.Row id="intro-row">
@@ -58,7 +56,6 @@ class Home extends Component {
             </div>
           </Grid.Row> */}
         {/* </Grid> */}
-        {/* <Footer /> */}
       </div>
     );
   }

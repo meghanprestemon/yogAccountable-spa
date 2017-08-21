@@ -5,16 +5,15 @@ import { bindActionCreators } from 'redux';
 import {  } from '../actions';
 
 class Footer extends Component {
-  state = { activeItem: 'home' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  // handleItemClick = (e, { name }) =>
 
   render() {
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     return (
       <div className='footer'>
-        <Button basic content='back to top' icon='arrow up' labelPosition='right' onClick={this.handleItemClick} />
+        <Button basic content='back to top' icon='arrow up' labelPosition='right' />
 
         <div className='footer-links'>
           <Popup
