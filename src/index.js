@@ -7,6 +7,7 @@ import logger from 'redux-logger'
 import rootReducer from './reducers'
 // import Api from './Api'
 import App from './App';
+// import { unregister } from './registerServiceWorker'
 // import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
@@ -24,4 +25,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+// unregister()
 // registerServiceWorker();

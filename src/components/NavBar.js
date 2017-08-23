@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom'
+import Home from './Home/Home.js';
+import Login from './Login.js';
 import {  } from '../actions';
 
 class NavBar extends Component {
@@ -16,13 +19,23 @@ class NavBar extends Component {
       <div>
         <Menu pointing secondary>
           <Menu.Menu position='left'>
-            <Menu.Item name='yogAccountable' active={activeItem === 'yogAccountable'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/' name='home' onClick={this.handleItemClick}>
+              yogAccountable
+            </Menu.Item>
           </Menu.Menu>
           <Menu.Menu position='right'>
-            <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
-            <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick} />
-            <Menu.Item name='login' active={activeItem === 'login'} onClick={this.handleItemClick} />
-            <Menu.Item name='register' active={activeItem === 'register'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/' name='home' active={activeItem === 'home'} onClick={this.handleItemClick}>
+              home
+            </Menu.Item>
+            <Menu.Item name='videos' active={activeItem === 'videos'} onClick={this.handleItemClick}>
+              videos
+            </Menu.Item>
+            <Menu.Item as={Link} to='/users/login' name='login' active={activeItem === 'login'} onClick={this.handleItemClick}>
+              login
+            </Menu.Item>
+            <Menu.Item name='register' active={activeItem === 'register'} onClick={this.handleItemClick}>
+              register
+            </Menu.Item>
           </Menu.Menu>
         </Menu>
       </div>
