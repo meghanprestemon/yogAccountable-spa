@@ -4,7 +4,9 @@ import { login } from './login.js'
 
 export let initialState = {
   activeItem: 'home',
-  hideMessage: true
+  hideMessage: true,
+  userFirstName: '',
+  userId: ''
 }
 
 const rootReducer = combineReducers({

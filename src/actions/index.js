@@ -1,5 +1,6 @@
 export const TOGGLE_ACTIVE = 'TOGGLE_ACTIVE';
 export const TOGGLE_HIDDEN_MSG = 'TOGGLE_HIDDEN_MSG';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export function toggleActive (pageName) {
   return (dispatch, getState) => {
@@ -27,9 +28,14 @@ export function login (username, password) {
             type: TOGGLE_HIDDEN_MSG,
             hideMessage: false
           });
-        } else if (loginResponse === true) {
+        } else if (loginResponse.login === true) {
+          // this.props.history.push('/entries')
+          return dispatch({
+            type: LOGIN_SUCCESS,
+            userFirstName: loginResponse.userFirstName,
+            userId: loginResponse.userId
+          })
           //TODO: UPDATE - the following command should redirect to user entries page or error alert
-          // this.props.history.push('/')
         }
       })
   }

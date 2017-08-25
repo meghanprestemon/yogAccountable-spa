@@ -14,7 +14,6 @@ class Login extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this);
     let username = event.target.username.value;
     let password = event.target.password.value;
 
@@ -41,7 +40,7 @@ class Login extends Component {
               <Grid.Row>
                 <Grid.Column textAlign='center'>
                   <Message
-                    hidden={this.props.hideMessage}
+                    hidden={hideMessage}
                     error
                     header='Please Try Again'
                     content='The email or password provided is incorrect.'
