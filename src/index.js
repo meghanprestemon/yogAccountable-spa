@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import logger from 'redux-logger'
 import rootReducer from './reducers'
-// import Api from './Api'
+import Api from './Api'
 import App from './App';
 // import { unregister } from './registerServiceWorker'
 // import registerServiceWorker from './registerServiceWorker';
@@ -13,10 +13,10 @@ import App from './App';
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  // applyMiddleware(
-  //   thunkMiddleware.withExtraArgument({ Api }),
-  //   logger,
-  // )
+  applyMiddleware(
+    thunkMiddleware.withExtraArgument({ Api }),
+    logger,
+  )
 )
 
 ReactDOM.render(

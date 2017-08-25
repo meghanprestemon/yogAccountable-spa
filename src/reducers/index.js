@@ -1,12 +1,15 @@
-import { combineReducers } from 'redux'
-import navbar from './navbar'
-import home from './home'
-import footer from './footer'
+import { combineReducers } from 'redux';
+import { navbarActions } from './navbar.js';
+import { login } from './login.js'
+
+export let initialState = {
+  activeItem: 'home',
+  hideMessage: true
+}
 
 const rootReducer = combineReducers({
-  navbar,
-  home,
-  footer
+  navbarActions,
+  login
 })
 
 export default rootReducer;
