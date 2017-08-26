@@ -29,13 +29,12 @@ export function login (username, password) {
             hideMessage: false
           });
         } else if (loginResponse.login === true) {
-          // this.props.history.push('/entries')
           return dispatch({
             type: LOGIN_SUCCESS,
             userFirstName: loginResponse.userFirstName,
-            userId: loginResponse.userId
+            userId: loginResponse.userId,
+            redirectToEntries: true
           })
-          //TODO: UPDATE - the following command should redirect to user entries page or error alert
         }
       })
   }

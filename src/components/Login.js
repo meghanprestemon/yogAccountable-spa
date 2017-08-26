@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Segment, Header, Container, Grid, Button, Icon, Form, Divider, Message } from 'semantic-ui-react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { login } from '../actions';
 import { bindActionCreators } from 'redux';
@@ -23,8 +23,14 @@ class Login extends Component {
   }
 
   render () {
-    const { hideMessage } = this.props;
-    console.log(this.props);
+    const { hideMessage, redirectToEntries } = this.props;
+
+    if (redirectToEntries) {
+      return (
+        <Redirect to="/entries"/>
+      )
+    }
+
     return (
       <div>
         <Container text>
@@ -76,9 +82,11 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const hideMessage = state.login.hideMessage
+  const hideMessage = state.login.hideMessage;
+  const redirectToEntries = state.login.redirectToEntries;
   return {
-    hideMessage
+    hideMessage,
+    redirectToEntries
   }
 }
 

@@ -6,7 +6,8 @@ export let initialState = {
   activeItem: 'home',
   hideMessage: true,
   userFirstName: '',
-  userId: ''
+  userId: '',
+  redirectToEntries: false
 }
 
 const rootReducer = combineReducers({
