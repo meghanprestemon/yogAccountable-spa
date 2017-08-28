@@ -1,6 +1,7 @@
 export const TOGGLE_ACTIVE = 'TOGGLE_ACTIVE';
 export const TOGGLE_HIDDEN_MSG = 'TOGGLE_HIDDEN_MSG';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const GET_ENTRIES = 'GET_ENTRIES';
 
 export function toggleActive (pageName) {
   return (dispatch, getState) => {
@@ -16,7 +17,6 @@ export function login (username, password) {
     Api.verifyLogin(username, password)
       .then(response => response.json())
       .then(loginResponse => {
-        console.log('response', loginResponse);
         if ((loginResponse.field === 'username') && (loginResponse.error === 'undefined')) {
           //alert 'please provide username'
         } else if ((loginResponse.field === 'password') && (loginResponse.error === 'undefined')) {
@@ -36,6 +36,31 @@ export function login (username, password) {
             redirectToEntries: true
           })
         }
+      })
+  }
+}
+
+export function getEntries () {
+  return (dispatch, getState, { Api }) => {
+    Api.retrieveEntries()
+      .then(response => response.json())
+      .then(entriesResponse => {
+        console.log(entriesResponse);
+        // entriesResponse.forEach(entry => )
+
+
+        // return dispatch({
+        //   type: GET_ENTRIES,
+        //   entryData: [
+        //     date: entryData.date,
+        //     location: entryData.location,
+        //     yogaType: entryData.yogaType,
+        //     startTime: entryData.startTime,
+        //     endTime: entryData.endTime,
+        //     duration: entryData.duration,
+        //     comments: entryData.comments
+        //   ]
+        // })
       })
   }
 }

@@ -2,29 +2,32 @@ import React, { Component } from 'react';
 import { Segment, Header, Container, Table } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import {  } from '../actions';
+import { getEntries } from '../actions';
 import { bindActionCreators } from 'redux';
 
 class AccountEntries extends Component {
-//   constructor(props) {
-//     super(props)
-//
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-//
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     let username = event.target.username.value;
-//     let password = event.target.password.value;
-//
-//     if (username !== '' && password !== '') {
-//       this.props.login(username, password);
-//     }
-//   }
-//
-  render () {
-    const { userFirstName } = this.props;
+  constructor(props) {
+    super(props)
 
+    this.populateTable = this.populateTable.bind(this);
+  }
+
+  populateTable(userId) {
+    let entries = this.props.getEntries();
+
+    console.log('entries', entries);
+
+    let entryRows = [];
+
+    // entries.forEach(entry => )
+  }
+
+  render () {
+    const { userFirstName, entries } = this.props;
+    // let entryRows = [];
+    // entries.forEach(entry => {
+    //   entryRows.push(<tr Population={zone.population} Zone={zone.name} />);
+    // };
     return (
       <div>
         <Container text>
@@ -46,23 +49,7 @@ class AccountEntries extends Component {
               </Table.Header>
 
               <Table.Body>
-                <Table.Row>
-                  <Table.Cell>
-                    First
-                  </Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Cell</Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Cell</Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                  <Table.Cell>Cell</Table.Cell>
-                </Table.Row>
+                {this.populateTable()}
               </Table.Body>
             </Table>
           </Segment>
@@ -73,17 +60,19 @@ class AccountEntries extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const userFirstName = state.login.userFirstName
+  const userFirstName = state.login.userFirstName;
+  const entries = state.entries.entryData;
   return {
-    userFirstName
+    userFirstName,
+    entries
   }
 }
-//
-// const mapDispatchToProps = dispatch => bindActionCreators({
-//   login
-// }, dispatch)
-//
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getEntries
+}, dispatch)
+
 export default connect(
   mapStateToProps,
-//   mapDispatchToProps
+  mapDispatchToProps
 )(AccountEntries)
