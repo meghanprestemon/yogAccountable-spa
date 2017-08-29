@@ -45,22 +45,18 @@ export function getEntries () {
     Api.retrieveEntries()
       .then(response => response.json())
       .then(entriesResponse => {
-        console.log(entriesResponse);
-        // entriesResponse.forEach(entry => )
-
-
-        // return dispatch({
-        //   type: GET_ENTRIES,
-        //   entryData: [
-        //     date: entryData.date,
-        //     location: entryData.location,
-        //     yogaType: entryData.yogaType,
-        //     startTime: entryData.startTime,
-        //     endTime: entryData.endTime,
-        //     duration: entryData.duration,
-        //     comments: entryData.comments
-        //   ]
-        // })
+        return dispatch({
+          type: GET_ENTRIES,
+          entryData: entriesResponse
+        })
       })
   }
 }
+
+// date: entryData.date,
+// location: entryData.location,
+// yogaType: entryData.yogaType,
+// startTime: entryData.startTime,
+// endTime: entryData.endTime,
+// duration: entryData.duration,
+// comments: entryData.comments

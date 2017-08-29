@@ -6,28 +6,55 @@ import { getEntries } from '../actions';
 import { bindActionCreators } from 'redux';
 
 class AccountEntries extends Component {
-  constructor(props) {
-    super(props)
-
-    this.populateTable = this.populateTable.bind(this);
-  }
-
-  populateTable(userId) {
-    let entries = this.props.getEntries();
-
-    console.log('entries', entries);
-
-    let entryRows = [];
-
-    // entries.forEach(entry => )
+  componentDidMount() {
+    this.props.getEntries();
   }
 
   render () {
     const { userFirstName, entries } = this.props;
-    // let entryRows = [];
-    // entries.forEach(entry => {
-    //   entryRows.push(<tr Population={zone.population} Zone={zone.name} />);
-    // };
+    let entryRows = [];
+    console.log('*create entry rows here*', entries);
+    entries.forEach(entry => {
+      entryRows.push(
+        <Table.Row>
+          <Table.Cell>
+            <div>
+              {entry.date}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.location}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.yogaType}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.startTime}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.endTime}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.duration}
+            </div>
+          </Table.Cell>
+          <Table.Cell>
+            <div>
+              {entry.comments}
+            </div>
+          </Table.Cell>
+        </Table.Row>
+      );
+    });
     return (
       <div>
         <Container text>
@@ -49,7 +76,7 @@ class AccountEntries extends Component {
               </Table.Header>
 
               <Table.Body>
-                {this.populateTable()}
+                {entryRows}
               </Table.Body>
             </Table>
           </Segment>
@@ -62,6 +89,8 @@ class AccountEntries extends Component {
 const mapStateToProps = (state, ownProps) => {
   const userFirstName = state.login.userFirstName;
   const entries = state.entries.entryData;
+  console.log('looking for entries', state.entries);
+
   return {
     userFirstName,
     entries

@@ -6,6 +6,7 @@ export default class Api {
         'Content-Type': 'application/json'
       },
       method: 'POST',
+      credentials: 'include',
       body: JSON.stringify({ username, password })
     })
       .then(response => response)
