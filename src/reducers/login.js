@@ -24,6 +24,6 @@ export const login = (state = {
         redirectToEntries
       }
     default:
-      return initialState;
+      return state;
   }
 };

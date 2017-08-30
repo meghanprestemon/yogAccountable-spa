@@ -8,6 +8,6 @@ export const navbarActions = (state = { activeItem: 'home' }, action) => {
     case TOGGLE_ACTIVE:
       return {...state, activeItem: action.pageName};
     default:
-      return initialState;
+      return state;
   }
 };

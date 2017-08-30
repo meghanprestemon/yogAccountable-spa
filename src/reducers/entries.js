@@ -7,11 +7,11 @@ export const entries = (state = { entryData: [] }, action) => {
   switch (action.type) {
     case GET_ENTRIES:
       const { entryData } = action;
-      entryData.forEach((entry, i) => {
-        entry.key = i;
+      entryData.forEach((entry) => {
+        entry.key = entry.id;
       })
       return {...state, entryData};
     default:
-      return initialState;
+      return state;
   }
 };

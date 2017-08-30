@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Segment, Header, Container, Table } from 'semantic-ui-react';
+import { Segment, Header, Container, Table, Loader, Dimmer } from 'semantic-ui-react';
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { getEntries } from '../actions';
 import { bindActionCreators } from 'redux';
+import EntriesTable from './EntriesTable.js';
 
 class AccountEntries extends Component {
   componentDidMount() {
@@ -12,49 +13,11 @@ class AccountEntries extends Component {
 
   render () {
     const { userFirstName, entries } = this.props;
-    let entryRows = [];
-    console.log('*create entry rows here*', entries);
-    entries.forEach(entry => {
-      entryRows.push(
-        <Table.Row>
-          <Table.Cell>
-            <div>
-              {entry.date}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.location}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.yogaType}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.startTime}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.endTime}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.duration}
-            </div>
-          </Table.Cell>
-          <Table.Cell>
-            <div>
-              {entry.comments}
-            </div>
-          </Table.Cell>
-        </Table.Row>
-      );
-    });
+    let tableBody;
+    if (entries.length) {
+      tableBody = <EntriesTable />
+    }
+
     return (
       <div>
         <Container text>
@@ -75,9 +38,8 @@ class AccountEntries extends Component {
                 </Table.Row>
               </Table.Header>
 
-              <Table.Body>
-                {entryRows}
-              </Table.Body>
+              {tableBody}
+
             </Table>
           </Segment>
         </Container>
