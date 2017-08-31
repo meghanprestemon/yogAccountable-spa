@@ -52,11 +52,3 @@ export function getEntries () {
       })
   }
 }
-
-// date: entryData.date,
-// location: entryData.location,
-// yogaType: entryData.yogaType,
-// startTime: entryData.startTime,
-// endTime: entryData.endTime,
-// duration: entryData.duration,
-// comments: entryData.comments

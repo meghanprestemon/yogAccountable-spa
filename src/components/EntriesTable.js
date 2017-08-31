@@ -8,46 +8,32 @@ class EntriesTable extends Component {
 
   render () {
     const { entries } = this.props;
-    console.log('*create entry rows here*', entries);
 
     return (
       <Table.Body>
         {entries.map(entry =>
           <Table.Row key={entry.id}>
             <Table.Cell>
-              <div>
-                {entry.date.toString()}
-              </div>
+              {entry.date}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.location}
-              </div>
+              {entry.location}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.yogaType}
-              </div>
+              {entry.yogaType}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.startTime}
-              </div>
+              {entry.startTime}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.endTime}
-              </div>
+              {entry.endTime}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.duration.minutes}
-              </div>
+              {entry.duration.hours ? entry.duration.hours+'h' : null}
+              {entry.duration.minutes ? entry.duration.minutes+'m' : null}
             </Table.Cell>
             <Table.Cell>
-              <div>
-                {entry.comments}
-              </div>
+              {entry.comments}
             </Table.Cell>
           </Table.Row>
         )}
@@ -58,7 +44,6 @@ class EntriesTable extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const entries = state.entries.entryData;
-  console.log('looking for entries', state.entries);
 
   return {
     entries
